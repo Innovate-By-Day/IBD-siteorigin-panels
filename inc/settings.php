@@ -170,6 +170,8 @@ class SiteOrigin_Panels_Settings {
 		$defaults['tablet-width']                = 1024;
 		$defaults['mobile-width']                = 780;
 		$defaults['margin-bottom']               = 30;
+		$defaults['use-widget-margin-bottom']    = false;
+		$defaults['widget-margin-bottom']        = 30;
 		$defaults['row-mobile-margin-bottom']    = '';
 		$defaults['mobile-cell-margin']          = $mobile_cell_margin;
 		$defaults['widget-mobile-margin-bottom'] = '';
@@ -481,6 +483,19 @@ class SiteOrigin_Panels_Settings {
 			'unit'        => 'px',
 			'label'       => __( 'Row/Widget Bottom Margin', 'siteorigin-panels' ),
 			'description' => __( 'Default margin below rows and widgets.', 'siteorigin-panels' ),
+		);
+
+		$fields['layout']['fields']['use-widget-margin-bottom'] = array(
+			'type'        => 'checkbox',
+			'label'       => __( 'Use different bottom margin for widgets?', 'siteorigin-panels' ),
+			'description' => __( 'If not enabled the same value will be used for rows and widgets.', 'siteorigin-panels (IBD).' ),
+		);
+
+		$fields['layout']['fields']['widget-margin-bottom'] = array(
+			'type'        => 'number',
+			'unit'        => 'px',
+			'label'       => __( 'Widget Bottom Margin', 'siteorigin-panels' ),
+			'description' => __( 'Default margin below widgets. (IBD)', 'siteorigin-panels' ),
 		);
 
 		$fields['layout']['fields']['row-mobile-margin-bottom'] = array(

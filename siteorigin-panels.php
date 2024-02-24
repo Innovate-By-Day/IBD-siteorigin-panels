@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Page Builder by SiteOrigin
+Plugin Name: Page Builder by SiteOrigin - IBD Modified Verison
 Plugin URI: https://siteorigin.com/page-builder/
-Description: A drag and drop, responsive page builder that simplifies building your website.
+Description: THIS PLUGIN HAS BEEN MODIFIED: Updating using WordPress's repo will overwrite these changes and may result in loss of functionaility or other site errors. IBD maintains this modified version. For further info email calvin@innovatebyday.ca || A drag and drop, responsive page builder that simplifies building your website.
 Version: 2.29.5
-Author: SiteOrigin
-Author URI: https://siteorigin.com
+Author: Innovate By Day
+Author URI: https://innovatebyday.ca
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/premium/
@@ -19,6 +19,27 @@ if ( ! defined( 'SITEORIGIN_PANELS_JS_SUFFIX' ) ) {
 define( 'SITEORIGIN_PANELS_CSS_SUFFIX', '.min' );
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/functions.php';
+
+/* Remove Update Checks */
+add_filter( 'site_transient_update_plugins', 'disable_plugin_updates' );
+
+function disable_plugin_updates( $value ) {
+    if ( isset( $value ) && is_object( $value ) ) {
+        unset( $value->response['siteorigin-panesl/siteorigin-panels.php'] );
+    }
+    return $value;
+}
+
+/* Disable Auto Updates */
+add_filter( 'auto_update_plugin', 'disable_plugin_auto_update', 10, 2 );
+function disable_plugin_auto_update( $update, $item ) {
+    // Check the plugin's slug or name
+    if ( 'siteorigin-panels' === $item->slug ) {
+        return false; // Disable auto-updates for this plugin
+    }
+    return $update; // Return the original update status for other plugins
+}
+
 
 class SiteOrigin_Panels {
 	public $container = array();

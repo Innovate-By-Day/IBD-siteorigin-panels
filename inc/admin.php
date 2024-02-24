@@ -173,10 +173,11 @@ class SiteOrigin_Panels_Admin {
 
 		unset( $links['edit'] );
 		$links[] = '<a href="' . admin_url( 'options-general.php?page=siteorigin_panels' ) . '">' . __( 'Settings', 'siteorigin-panels' ) . '</a>';
-		$links[] = '<a href="http://siteorigin.com/threads/plugin-page-builder/">' . __( 'Support', 'siteorigin-panels' ) . '</a>';
+		//$links[] = '<a href="http://siteorigin.com/threads/plugin-page-builder/">' . __( 'Support', 'siteorigin-panels' ) . '</a>';
 
 		if ( SiteOrigin_Panels::display_premium_teaser() ) {
-			$links[] = '<a href="' . esc_url( SiteOrigin_Panels::premium_url() ) . '" style="color: #3db634" target="_blank" rel="noopener noreferrer">' . __( 'Addons', 'siteorigin-panels' ) . '</a>';
+			//$links[] = '<a href="' . esc_url( SiteOrigin_Panels::premium_url() ) . '" style="color: #3db634" target="_blank" rel="noopener noreferrer">' . __( 'Addons', 'siteorigin-panels' ) . '</a>';
+			$links[] = 'Premium Not Enabled';
 		}
 
 		return $links;

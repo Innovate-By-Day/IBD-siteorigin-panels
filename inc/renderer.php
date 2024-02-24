@@ -373,12 +373,26 @@ class SiteOrigin_Panels_Renderer {
 
 		// Add the bottom margins.
 		if ( ! siteorigin_panels_setting( 'inline-styles' ) ) {
-			$css->add_widget_css( $post_id, false, false, false, '', array(
-				'margin-bottom' => apply_filters( 'siteorigin_panels_css_cell_margin_bottom', $settings['margin-bottom'] . 'px', false, false, $panels_data, $post_id ),
-			) );
+
+			// Are we using the much better widget-margin-bottom?
+			if($settings['use-widget-margin-bottom']==true){
+				$css->add_widget_css( $post_id, false, false, false, '', array(
+					'margin-bottom' => apply_filters( 'siteorigin_panels_css_cell_margin_bottom', $settings['widget-margin-bottom'] . 'px', false, false, $panels_data, $post_id )
+				) );
+
+			}
+			else {
+				$css->add_widget_css( $post_id, false, false, false, '', array(
+					'margin-bottom' => apply_filters( 'siteorigin_panels_css_cell_margin_bottom', $settings['margin-bottom'] . 'px', false, false, $panels_data, $post_id )
+				) );
+			
+			}
+
 			$css->add_widget_css( $post_id, false, false, false, ':last-of-type', array(
 				'margin-bottom' => apply_filters( 'siteorigin_panels_css_cell_last_margin_bottom', '0px', false, false, $panels_data, $post_id ),
 			) );
+
+
 		}
 
 		if ( $settings['responsive'] ) {
